@@ -1,0 +1,51 @@
+import java.util.ArrayList;
+import java.util.Collections;
+public class RomanToInteger {
+		   int value( char  R) {
+			   if(R == '|')
+				   return 1;
+			   if(R == 'V')
+				   return 5;
+			   if(R == 'X')
+				   return 10;
+			   if(R == 'L')
+				   return 50;
+			   if(R == 'C')
+				   return 100;
+			   if(R == 'D')
+				   return 500;
+			   if(R == 'M')
+				   return 1000;
+			   return -1;
+		   }
+			   int convertRomanToInteger(String S) {
+				   int total = 0;
+				   for (int i=0; i<S.length(); i++)   
+				    {   
+				      int S1 = value(S.charAt(i));   
+				      if (i+1 <S.length())   
+				      {   
+				        int S2 = value(S.charAt(i+1));   
+				        if (S1 >= S2)   
+				        {   
+				          total = total + S1;   
+				        }   
+				        else  
+				        {   
+				          total = total - S1;   
+				        }   
+				      }   
+				      else  
+				      {   
+				        total = total + S1;   
+				      }   
+				    }    
+				    return total;   
+				  }   
+				  public static void main(String[] args)   
+				  {   
+				    RomanToInteger ob = new RomanToInteger();
+				    String romanStr= "LXCVM";   
+				    System.out.println("The corresponding Integer value is: "+ob.convertRomanToInteger(romanStr));   
+				  }  	
+	   }
